@@ -1,22 +1,16 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@shared/prisma";
+import dotenv from "dotenv";
+import path from "path";
 
-export async function POST(req: Request) {
+dotenv.config({ path: path.resolve("../.env") });
+export async function GET(req: Request) {
   try {
     const prisma = new PrismaClient();
-    const { userId, action, status, additionalData } = await req.json();
-    await prisma.auditLog.create({
-      data: {
-        userId,
-        action,
-        status,
-        additionalData: additionalData,
-      },
+    const logs = await prisma.auditLog.findMany({
+      orderBy: { createdAt: "desc" },
     });
-    return NextResponse.json(
-      { message: "Успешное логирование" },
-      { status: 200 }
-    );
+    return NextResponse.json({ logs }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Неизвестная ошибка" },

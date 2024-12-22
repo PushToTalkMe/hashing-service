@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/navbar/navbar";
 import { Session } from "@/interfaces/session.interface";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
