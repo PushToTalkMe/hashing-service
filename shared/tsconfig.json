@@ -1,6 +1,12 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "es6",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "composite": true,
     "rootDir": "./",
     "outDir": "../dist/shared",

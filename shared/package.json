@@ -1,4 +1,8 @@
 {
   "name": "shared",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "scripts": {
+    "db:connect": "ts-node db/connect.ts",
+    "build": "tsc --build"
+  }
 }
