@@ -1,6 +1,9 @@
-import { PrismaClient } from "@shared/prisma";
+import { PrismaClient } from "shared/prisma";
+import dotenv from "dotenv";
+import path from "path";
 
-export async function logAuth(
+dotenv.config({ path: path.resolve("../.env") });
+export async function log(
   userId: string | null,
   action: string,
   status: string,

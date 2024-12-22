@@ -22,7 +22,7 @@ const HashPageForm = ({ session }: { session: Session }) => {
     try {
       const response = await fetch("/api/hash", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, email: session.user.email }),
         headers: {
           "Content-Type": "application/json",
         },

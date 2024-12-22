@@ -1,6 +1,6 @@
 import { Role, Session } from "@/interfaces/session.interface";
 import { ROLES } from "@/utils/constants";
-import { logAuth } from "@shared/logs/log-auth";
+import { log } from "@shared/logs/log";
 import { NextAuthOptions } from "next-auth";
 import YandexProvider, { YandexProfile } from "next-auth/providers/yandex";
 
@@ -41,32 +41,24 @@ export const authOptions: NextAuthOptions = {
   },
   events: {
     async signIn({ user, account }) {
-      if (user && account) {
-        await logAuth(
-          user.id,
+      if (user && account && user.email) {
+        await log(
+          user.email,
           "login",
           "success",
           JSON.stringify({
-            email: user.email,
             provider: account.provider,
           })
         );
       } else {
-        await logAuth(null, "login", "failed");
+        await log(null, "login", "failed");
       }
     },
     async signOut({ token }) {
-      if (token.sub) {
-        await logAuth(
-          token.sub,
-          "logout",
-          "success",
-          JSON.stringify({
-            email: token.email,
-          })
-        );
+      if (token.email) {
+        await log(token.email, "logout", "success");
       } else {
-        await logAuth(null, "logout", "failed");
+        await log(null, "logout", "failed");
       }
     },
   },
