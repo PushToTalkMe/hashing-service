@@ -1,4 +1,4 @@
-import { ALGORITHMS } from "@shared/algorithms";
+import { ALGORITHMS } from "shared/algorithms";
 import { z } from "zod";
 
 export const hashRequestSchema = z.object({

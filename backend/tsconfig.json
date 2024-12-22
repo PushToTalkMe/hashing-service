@@ -4,7 +4,11 @@
     "rootDir": "./src",
     "outDir": "../dist/backend",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["shared/*"]
+    }
   },
   "references": [{ "path": "../shared" }],
   "include": ["src/**/*.ts"],

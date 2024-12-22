@@ -1,12 +1,12 @@
 import express from "express";
-import {} from "@shared/schemas/hash.schema";
+import { hashRouter } from "./routes/hash.routes";
 
 const app = express();
 const PORT = 3001;
 
-app.get("/", (req, res) => {
-  res.send("Сервер запущен!");
-});
+app.use(express.json());
+
+app.use(hashRouter);
 
 app.listen(PORT, () => {
   console.log(`Сервер запущен на http://localhost:${PORT}`);
