@@ -37,8 +37,8 @@ const AuditLogPage = ({ session }: { session: Session }) => {
 
   return (
     <div>
-      <h1>Аудит лог</h1>
-      {loading && <p>Загрузка...</p>}
+      <h1 className={styles.title}>Аудит лог</h1>
+      {loading && <p style={{ textAlign: "center" }}>Загрузка...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {logs && (
         <div className={styles.logs}>

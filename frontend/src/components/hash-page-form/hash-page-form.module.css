@@ -1,0 +1,95 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #4caf50;
+}
+
+.select {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.select:focus {
+  border-color: #4caf50;
+}
+
+.button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.button:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: #e53935;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.error {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #8c0202;
+  margin-top: 1.5rem;
+}
+
+.result {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 1.5rem;
+}

@@ -2,6 +2,7 @@
 import { Session } from "@/interfaces/session.interface";
 import { ALGORITHMS } from "@shared/algorithms";
 import { useState } from "react";
+import styles from "./hash-page-form.module.css";
 
 const HashPageForm = ({ session }: { session: Session }) => {
   const [hash, setHash] = useState<string | null>(null);
@@ -43,30 +44,34 @@ const HashPageForm = ({ session }: { session: Session }) => {
   };
 
   return (
-    <div>
-      <h1>Хеширование строки</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Хеширование строки</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label className={styles.label}>
           Строка для хеширования:
-          <input type="text" name="data" required />
+          <input className={styles.input} type="text" name="data" required />
         </label>
-        <label>
+        <label className={styles.label}>
           Алгоритм:
-          <select name="algorithm">
+          <select className={styles.select} name="algorithm">
             {ALGORITHMS.map((ALGORITHM) => (
-              <option value={ALGORITHM} key={ALGORITHM}>
+              <option
+                className={styles.option}
+                value={ALGORITHM}
+                key={ALGORITHM}
+              >
                 {ALGORITHM.toUpperCase()}
               </option>
             ))}
           </select>
         </label>
-        <button type="submit" disabled={loading}>
+        <button className={styles.button} type="submit" disabled={loading}>
           {loading ? "Хеширование..." : "Хешировать"}
         </button>
       </form>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {hash && <p>Результат: {hash}</p>}
+      {error && <p className={styles.error}>{error}</p>}
+      {hash && <p className={styles.result}>Результат: {hash}</p>}
     </div>
   );
 };
