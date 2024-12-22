@@ -6,7 +6,8 @@
   "scripts": {
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
-    "db:connect": "npm --prefix shared run db:connect",
+    "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev",
     "build": "tsc --build"
   },
   "private": true,
@@ -19,15 +20,13 @@
   "author": "Vlad Ilyin",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^6.1.0",
     "express": "^4.21.2",
     "next": "^15.1.2",
     "next-auth": "^4.24.11",
-    "pg": "^8.13.1",
-    "pg-hstore": "^2.3.4",
+    "prisma": "^6.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "sequelize": "^6.37.5",
-    "sequelize-typescript": "^2.1.6",
     "zod": "^3.24.1"
   },
   "devDependencies": {

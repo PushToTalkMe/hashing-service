@@ -9,6 +9,8 @@
     "incremental": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "isolatedModules": true,
     "plugins": [
       {

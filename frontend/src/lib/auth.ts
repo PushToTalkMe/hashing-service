@@ -1,5 +1,6 @@
 import { Role, Session } from "@/interfaces/session.interface";
 import { ROLES } from "@/utils/constants";
+import { logAuth } from "@shared/logs/log-auth";
 import { NextAuthOptions } from "next-auth";
 import YandexProvider, { YandexProfile } from "next-auth/providers/yandex";
 
@@ -36,6 +37,37 @@ export const authOptions: NextAuthOptions = {
         role,
       };
       return sessionApp;
+    },
+  },
+  events: {
+    async signIn({ user, account }) {
+      if (user && account) {
+        await logAuth(
+          user.id,
+          "login",
+          "success",
+          JSON.stringify({
+            email: user.email,
+            provider: account.provider,
+          })
+        );
+      } else {
+        await logAuth(null, "login", "failed");
+      }
+    },
+    async signOut({ token }) {
+      if (token.sub) {
+        await logAuth(
+          token.sub,
+          "logout",
+          "success",
+          JSON.stringify({
+            email: token.email,
+          })
+        );
+      } else {
+        await logAuth(null, "logout", "failed");
+      }
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
