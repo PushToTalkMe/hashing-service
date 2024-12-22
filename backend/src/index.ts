@@ -1,4 +1,5 @@
 import express from "express";
+import {} from "@shared/schemas/hash.schema";
 
 const app = express();
 const PORT = 3001;

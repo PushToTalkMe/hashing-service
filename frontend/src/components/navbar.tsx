@@ -1,13 +1,10 @@
+"use client";
 import { Session } from "@/interfaces/session.interface";
-import { authOptions } from "@/lib/auth";
 import { ROLES } from "@/utils/constants";
 import { ROUTES } from "@/utils/route";
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 
-const Navbar = async () => {
-  const session = (await getServerSession(authOptions)) as Session;
-
+const Navbar = ({ session }: { session: Session }) => {
   return (
     <nav>
       <ul>
@@ -21,7 +18,7 @@ const Navbar = async () => {
           <>
             {session.user.role === ROLES.ADMIN && (
               <li>
-                <Link href={ROUTES.ADMIN}></Link>
+                <Link href={ROUTES.ADMIN}>Аудит Лог</Link>
               </li>
             )}
             <li>
