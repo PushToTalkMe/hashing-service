@@ -22,7 +22,6 @@
       "@/*": ["./src/*"],
       "@shared/*": ["../shared/*"]
     },
-    "outDir": "../dist/frontend",
     "noEmit": true
   },
   "references": [
