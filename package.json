@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "start:frontend": "npm --prefix frontend run start",
     "dev:backend": "npm --prefix backend run dev",
+    "build:backend": "node esbuild.config.js",
     "db:generate": "npx prisma generate",
-    "db:migrate": "npx prisma migrate dev",
-    "build": "tsc --build"
+    "db:migrate": "npx prisma migrate dev"
   },
   "private": true,
   "workspaces": [
@@ -34,6 +36,7 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
     "@types/react": "^19.0.2",
+    "esbuild": "^0.24.2",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.2",
     "nodemon": "^3.1.9",

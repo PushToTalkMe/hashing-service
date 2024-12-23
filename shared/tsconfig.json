@@ -9,8 +9,9 @@
     "emitDecoratorMetadata": true,
     "composite": true,
     "rootDir": "./",
-    "outDir": "../dist/shared",
+    "outDir": "dist",
     "strict": true
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

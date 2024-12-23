@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
     "composite": true,
     "baseUrl": ".",
     "paths": {
@@ -15,11 +16,7 @@
     }
   },
   "outDir": "dist",
-  "files": [],
-  "references": [
-    { "path": "./shared" },
-    { "path": "./backend" },
-    { "path": "./frontend" }
-  ],
+  "references": [{ "path": "./shared" }, { "path": "./backend" }],
+  "include": ["shared/*", "backend/**/*"],
   "exclude": ["node_modules"]
 }
