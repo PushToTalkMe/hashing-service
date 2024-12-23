@@ -2,7 +2,7 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f4f4f9;
+  background-color: var(--background-color);
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -10,7 +10,7 @@
 .title {
   text-align: center;
   font-size: 2rem;
-  color: #333;
+  color: var(--text-color);
   margin-bottom: 1.5rem;
 }
 
@@ -23,40 +23,40 @@
 .label {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #444;
+  color: var(--text-color);
 }
 
 .input {
   padding: 0.8rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .input:focus {
-  border-color: #4caf50;
+  border-color: var(--primary-color);
 }
 
 .select {
   padding: 0.8rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .select:focus {
-  border-color: #4caf50;
+  border-color: var(--primary-color);
 }
 
 .button {
   padding: 0.8rem 1.5rem;
   font-size: 1.1rem;
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--background-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -65,16 +65,16 @@
 }
 
 .button:disabled {
-  background-color: #b0b0b0;
+  background-color: var(--secondary-color);
   cursor: not-allowed;
 }
 
 .button:hover:not(:disabled) {
-  background-color: #45a049;
+  background-color: var(--primary-color-hover);
 }
 
 .error-message {
-  color: #e53935;
+  color: var(--primary-color-hover);
   font-size: 1rem;
   text-align: center;
   margin-top: 1rem;
@@ -83,13 +83,13 @@
 .error {
   text-align: center;
   font-size: 1.1rem;
-  color: #8c0202;
+  color: var(--primary-color-hover);
   margin-top: 1.5rem;
 }
 
 .result {
   text-align: center;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color);
   margin-top: 1.5rem;
 }

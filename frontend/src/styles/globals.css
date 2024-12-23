@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+}
+
+body.light {
+  --background-color: #ffffff;
+  --background-color-hover: #1abc9c;
+  --text-color: #000000;
+  --primary-color: #e74c3c;
+  --primary-color-hover: #c0392b;
+  --secondary-color: #2c3e50;
+}
+
+body.dark {
+  --background-color: #2d2424;
+  --background-color-hover: #9c6464;
+  --text-color: #ffffff;
+  --primary-color: #7e85ef;
+  --primary-color-hover: #53589d;
+  --secondary-color: #f6f6f6;
+}

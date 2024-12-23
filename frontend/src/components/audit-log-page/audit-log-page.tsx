@@ -22,7 +22,6 @@ const AuditLogPage = ({ session }: { session: Session }) => {
       });
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
         setLogs(result.logs);
       } else {
         const errorData = await response.json();

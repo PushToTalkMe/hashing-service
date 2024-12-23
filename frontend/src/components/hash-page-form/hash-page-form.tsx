@@ -1,11 +1,18 @@
 "use client";
 import { Session } from "@/interfaces/session.interface";
-import { ALGORITHMS } from "@shared/algorithms";
+import { ALGORITHMS, Algorithm } from "@shared/algorithms";
 import { useState } from "react";
 import styles from "./hash-page-form.module.css";
 
 const HashPageForm = ({ session }: { session: Session }) => {
   const [hash, setHash] = useState<string | null>(null);
+  const [formData, setFormData] = useState<{
+    data: string;
+    algorithm: Algorithm;
+  }>({
+    data: "",
+    algorithm: ALGORITHMS[0],
+  });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -49,11 +56,30 @@ const HashPageForm = ({ session }: { session: Session }) => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.label}>
           Строка для хеширования:
-          <input className={styles.input} type="text" name="data" required />
+          <input
+            className={styles.input}
+            type="text"
+            name="data"
+            value={formData.data}
+            onChange={(e) => {
+              setFormData((state) => ({ ...state, data: e.target.value }));
+            }}
+            required
+          />
         </label>
         <label className={styles.label}>
           Алгоритм:
-          <select className={styles.select} name="algorithm">
+          <select
+            className={styles.select}
+            name="algorithm"
+            value={formData.algorithm}
+            onChange={(e) =>
+              setFormData((state) => ({
+                ...state,
+                algorithm: e.target.value as Algorithm,
+              }))
+            }
+          >
             {ALGORITHMS.map((ALGORITHM) => (
               <option
                 className={styles.option}
@@ -65,7 +91,11 @@ const HashPageForm = ({ session }: { session: Session }) => {
             ))}
           </select>
         </label>
-        <button className={styles.button} type="submit" disabled={loading}>
+        <button
+          className={styles.button}
+          type="submit"
+          disabled={loading || !formData.data}
+        >
           {loading ? "Хеширование..." : "Хешировать"}
         </button>
       </form>
