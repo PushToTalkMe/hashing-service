@@ -1,10 +1,9 @@
 "use client";
-import { Session } from "@/interfaces/session.interface";
 import { AuditLog } from "@shared/schemas/audit-log.interface";
 import styles from "./audit-log-page.module.css";
 import { useEffect, useState } from "react";
 
-const AuditLogPage = ({ session }: { session: Session }) => {
+const AuditLogPage = () => {
   const [logs, setLogs] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);

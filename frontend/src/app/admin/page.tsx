@@ -2,7 +2,7 @@ import AuditLogPage from "@/components/audit-log-page/audit-log-page";
 import { requireAdmin } from "@/lib/admin-protect";
 
 export default async function AuditLogPageServer() {
-  const session = await requireAdmin();
+  await requireAdmin();
 
-  return <AuditLogPage session={session} />;
+  return <AuditLogPage />;
 }
