@@ -2,6 +2,7 @@ FROM node:18 AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
+COPY tsconfig.json ./
 COPY prisma ./prisma
 COPY backend ./backend
 COPY shared ./shared
