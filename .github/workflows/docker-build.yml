@@ -1,0 +1,42 @@
+name: Docker Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Set up Docker Compose
+        uses: docker/compose-action@v2
+
+      - name: Create .backend.docker.env file
+        run: echo "${{ secrets.BACKEND_DOCKER_ENV }}" > ./.backend.docker.env
+
+      - name: Create .frontend.docker.env file
+        run: echo "${{ secrets.FRONTEND_DOCKER_ENV }}" > ./.frontend.docker.env
+
+      - name: Build and start containers with docker-compose
+        run: |
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml up -d
+
+      - name: Test services (optional)
+        run: |
+          docker-compose -f docker-compose.yml ps
+
+      - name: Shutdown containers
+        run: |
+          docker-compose -f docker-compose.yml down
