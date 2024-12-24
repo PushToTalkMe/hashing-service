@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:frontend": "npm --prefix frontend run dev",
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push",
+    "build:backend": "node esbuild.config.js",
+    "start:backend": "node dist/backend/src/index.js",
     "build:frontend": "npm --prefix frontend run build",
     "start:frontend": "npm --prefix frontend run start",
     "dev:backend": "npm --prefix backend run dev",
-    "build:backend": "node esbuild.config.js",
-    "db:generate": "npx prisma generate",
-    "db:migrate": "npx prisma migrate dev"
+    "dev:frontend": "npm --prefix frontend run dev",
+    "docker:build": "docker-compose up --build"
   },
   "private": true,
   "workspaces": [

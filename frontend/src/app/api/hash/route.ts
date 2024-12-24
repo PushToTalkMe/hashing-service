@@ -4,7 +4,6 @@ import { log } from "@shared/logs/log";
 
 export async function POST(req: Request) {
   const { data, algorithm, email } = await req.json();
-
   try {
     const hashDto = hashRequestSchema.parse({ data, algorithm });
     await log(
@@ -16,7 +15,7 @@ export async function POST(req: Request) {
         algorithm,
       })
     );
-    const backendResponse = await fetch("http://localhost:3001/hash", {
+    const backendResponse = await fetch(`${process.env.BACKEND_URL}/hash`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

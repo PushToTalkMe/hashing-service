@@ -21,16 +21,10 @@ const HashPageForm = ({ session }: { session: Session }) => {
     setLoading(true);
     setError(null);
 
-    const formData = new FormData(event.target as HTMLFormElement);
-    const data = {
-      data: formData.get("data") as string,
-      algorithm: formData.get("algorithm") as string,
-    };
-
     try {
       const response = await fetch("/api/hash", {
         method: "POST",
-        body: JSON.stringify({ ...data, email: session.user.email }),
+        body: JSON.stringify({ ...formData, email: session.user.email }),
         headers: {
           "Content-Type": "application/json",
         },

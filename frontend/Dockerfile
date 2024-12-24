@@ -1,21 +1,25 @@
-# Stage 1: Build
-FROM node:18 AS build
-
+FROM node:18 AS builder
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
+COPY tsconfig.json ./
+COPY frontend ./frontend
+COPY shared ./shared
+COPY prisma ./prisma
+COPY .frontend.docker.env ./frontend/.env
 RUN npm install
-COPY . .
-RUN npm run build
+RUN npx prisma generate --schema=prisma/schema.prisma
+RUN npm run build:frontend
 
-# Stage 2: Serve
-FROM node:18 AS serve
-
+FROM node:18
 WORKDIR /app
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/public ./public
-COPY package*.json ./
-RUN npm install --production
+
+COPY --from=builder /app/frontend/.next ./frontend/.next
+COPY --from=builder /app/shared/prisma ./shared/prisma
+COPY package.json package-lock.json ./
+COPY .frontend.docker.env ./frontend/.env
+COPY ./frontend/package.json ./frontend/package-lock.json /app/frontend/
+RUN npm install --omit=dev
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:frontend"]

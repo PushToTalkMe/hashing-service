@@ -1,8 +1,7 @@
 import { PrismaClient } from "shared/prisma";
 import dotenv from "dotenv";
-import path from "path";
 
-dotenv.config({ path: path.resolve("../.env") });
+dotenv.config();
 export async function log(
   userId: string | null,
   action: string,
