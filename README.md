@@ -1,1 +1,1 @@
-## Hashing
+## Hashing Service
